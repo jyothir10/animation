@@ -1,5 +1,9 @@
 import 'package:animation/screens/DetailsScreen.dart';
+import 'package:animation/screens/cartScreen.dart';
+import 'package:animation/screens/homeScreen.dart';
+import 'package:animation/screens/pageView.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 
 void main() {
   runApp(MyApp());
@@ -11,9 +15,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: DetailsScreen.id,
+      initialRoute: CartScreen.id,
       routes: {
         DetailsScreen.id : (context) => DetailsScreen(),
+        HomeScreen.id : (context) => HomeScreen(),
+        CartScreen.id: (context) => CartScreen(),
+        PageViewScreen.id: (context) => PageViewScreen(),
       },
     );
   }

@@ -1,6 +1,6 @@
+import 'package:animation/screens/homeScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/scheduler.dart';
 
 class DetailsScreen extends StatefulWidget {
   static const String id = '/details';
@@ -9,16 +9,22 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  bool isPressed = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: Colors.black,
-          size: 20,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+            size: 20,
+          ),
         ),
       ),
       body: Container(
@@ -27,9 +33,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Image(
-                image: AssetImage("images/bion.jpg"),
-                height: 200,
+              Hero(
+                tag: isPressed ? "cart$count" : "1",
+                child: Image(
+                  image: AssetImage("images/bion.jpg"),
+                  height: 200,
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,11 +66,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 15),
                     child: Text("500g"),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35,vertical: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -104,7 +115,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 40, vertical: 5),
                     child: Text(
                       "About the product",
                       style: TextStyle(
@@ -115,8 +127,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 5),
-                    child: Text("The lento Lavorazine method comes directly from the traditional and artisan way of making pasta."),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 40, vertical: 5),
+                    child: Text(
+                        "The lento Lavorazine method comes directly from the traditional and artisan way of making pasta."),
                   )
                 ],
               ),
@@ -125,22 +139,40 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Image(image: AssetImage("images/love.png"),
-                    height: 40,
-                    color: Colors.black54,),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      color: Colors.orangeAccent,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 10),
-                        child: Text("Add to cart",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),),
+                    Image(
+                      image: AssetImage("images/love.png"),
+                      height: 40,
+                      color: Colors.black54,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        timeDilation = 2;
+                        setState(() {
+                          isPressed = true;
+                          count++;
+                          num++;
+                          cartList.add(
+                              "images/bion.jpg");
+                        });
+                        Navigator.pushNamed(context, HomeScreen.id);
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        color: Colors.orangeAccent,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 40, vertical: 10),
+                          child: Text(
+                            "Add to cart",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
