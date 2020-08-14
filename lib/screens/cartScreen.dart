@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:animation/Components/Cartcard.dart';
 
 class CartScreen extends StatefulWidget {
   static const String id = '/cart';
@@ -15,6 +16,7 @@ class _CartScreenState extends State<CartScreen> {
       body: Container(
         color: Colors.black,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 45, bottom: 20, left: 30),
@@ -30,72 +32,86 @@ class _CartScreenState extends State<CartScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
+            Column(
+              children: <Widget>[
+                CartCard(
+                  img:
+                  "images/bion.jpg",
+                  name: "Biona Organic \nWhite Spelt Fusillii",
+                  price: "\$4.99",
+                ),
+                CartCard(
+                  img:
+                  "images/rummo.jpg",
+                  name: "Rummo Fusilli\nNo 48 Pasta",
+                  price: "\$14.99",
+                ),
+                CartCard(
+                  img: "images/seggiano.jpg",
+                  name: "Newman's Own Pasta\nSauce Socarooni",
+                  price: "\$9.99",
+                ),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      CircleAvatar(
-                        backgroundColor: Colors.white10,
-                        radius: 20,
-                        child: Icon(
-                          FontAwesomeIcons.car,
-                          color: Colors.orange,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Delivery",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
+                      Row(
+                        children: <Widget>[
+                          CircleAvatar(
+                            backgroundColor: Colors.white10,
+                            radius: 20,
+                            child: Icon(
+                              FontAwesomeIcons.car,
+                              color: Colors.orange,
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "Delivery",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        "\$30.00",
+                        style: TextStyle(
+                          color: Colors.white30,
+                          fontSize: 17,
                         ),
                       ),
                     ],
                   ),
-                  Text(
-                    "₹30.00",
-                    style: TextStyle(
-                      color: Colors.white30,
-                      fontSize: 17,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 90),
-              child: Row(
-                children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 90),
+                  child: Row(
                     children: <Widget>[
                       Text(
-                        "All orders of ₹40 or more",
+                        "All orders of ₹40 or more \nqualify for FREE delivery",
                         style: TextStyle(
                           color: Colors.white30,
                         ),
-                      ),
-                      Text(
-                        "qualify for FREE delivery",
-                        style: TextStyle(
-                          color: Colors.white30,
-                        ),
-                      ),
+                      )
                     ],
-                  )
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -107,7 +123,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   Text(
-                    "59.97",
+                    "\$59.97",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 23,
@@ -117,17 +133,20 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ),
             Card(
-              elevation: 5,
+              elevation: 15,
               color: Colors.orange,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Text(
-                "Next",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 150,vertical: 10),
+                child: Text(
+                  "Next",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:animation/screens/homeScreen.dart';
+import 'package:animation/screens/pageView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -154,7 +155,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           cartList.add(
                               "images/bion.jpg");
                         });
-                        Navigator.pushNamed(context, HomeScreen.id);
+                        Navigator.pushNamed(context, PageViewScreen.id);
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
